@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for the project */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8fafc; /* Tailwind gray-50 */
+}
+
+/* Custom scrollbar for better aesthetics */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1; /* Tailwind slate-300 */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #94a3b8; /* Tailwind slate-400 */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f5f9; /* Tailwind slate-100 */
+}
