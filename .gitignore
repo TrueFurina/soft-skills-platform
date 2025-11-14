@@ -23,3 +23,7 @@ yarn-error.log*
 .npm
 .eslintcache
 .vite
+
+
+# Cache directories
+/.cache
