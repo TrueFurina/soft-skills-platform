@@ -1,44 +1,59 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { Home, Target, BookOpen, BarChart3, Users, FileText, User } from 'lucide-react';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { Home, Zap, Award, BookOpen, Users, User } from 'lucide-react';
+
+// Import Components
 import Dashboard from './components/Dashboard';
 import Training from './components/Training';
-import LearningPath from './components/LearningPath';
 import Assessment from './components/Assessment';
+import LearningPath from './components/LearningPath';
 import Community from './components/Community';
 import Reports from './components/Reports';
 import Profile from './components/Profile';
-import './App.css';
+
+// Navigation Items
+const navItems = [
+  { name: '仪表盘', path: '/', icon: Home, link: 'dashboard' },
+  { name: '技能训练', path: '/training', icon: Zap, link: 'training' },
+  { name: '能力评估', path: '/assessment', icon: Award, link: 'assessment' },
+  { name: '学习路径', path: '/learning-path', icon: BookOpen, link: 'learning-path' },
+  { name: '学习社区', path: '/community', icon: Users, link: 'community' },
+  { name: '报告中心', path: '/reports', icon: BookOpen, link: 'reports' },
+  { name: '个人档案', path: '/profile', icon: User, link: 'profile' },
+];
+
+// Custom Hook to get active link based on path
+const useActiveLink = () => {
+  const location = useLocation();
+  const currentPath = location.pathname;
+  const activeItem = navItems.find(item => item.path === currentPath);
+  return activeItem ? activeItem.link : 'dashboard';
+};
 
 const App = () => {
-  const [activeLink, setActiveLink] = useState('dashboard');
-
-  const navItems = [
-    { name: '仪表盘', icon: Home, path: '/', component: Dashboard, link: 'dashboard' },
-    { name: '技能训练', icon: Target, path: '/training', component: Training, link: 'training' },
-    { name: '学习路径', icon: BookOpen, path: '/learning-path', component: LearningPath, link: 'learning-path' },
-    { name: '能力评估', icon: BarChart3, path: '/assessment', component: Assessment, link: 'assessment' },
-    { name: '学习社区', icon: Users, path: '/community', component: Community, link: 'community' },
-    { name: '报告中心', icon: FileText, path: '/reports', component: Reports, link: 'reports' },
-    { name: '个人档案', icon: User, path: '/profile', component: Profile, link: 'profile' },
-  ];
+  const [activeLink, setActiveLink] = useState(useActiveLink());
 
   return (
     <Router>
-      <div className="flex h-screen bg-gray-50">
-        {/* Sidebar */}
-        <div className="w-64 bg-[var(--deep-blue)] text-white flex flex-col p-4 shadow-xl">
-          <div className="text-2xl font-bold mb-8 p-2">软技能数字孪生系统</div>
+      <div className="flex h-screen bg-[var(--light-gray)]">
+        {/* Sidebar - Based on Reference Page */}
+        <div className="w-64 bg-[var(--primary-dark)] sidebar text-white flex flex-col p-4 shadow-xl">
+          <div className="flex items-center space-x-3 mb-8 p-2">
+            <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+              <Zap className="w-5 h-5 text-[var(--primary-dark)]" />
+            </div>
+            <div className="text-xl font-bold">SoftSkills AI</div>
+          </div>
           <nav className="flex-1 space-y-2">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
                 onClick={() => setActiveLink(item.link)}
-                className={`flex items-center space-x-3 p-3 rounded-lg transition-colors duration-200 ${
+                className={`flex items-center space-x-3 p-3 rounded-lg transition-colors duration-200 nav-link ${
                   activeLink === item.link
-                    ? 'bg-[var(--tech-blue)] shadow-md'
-                    : 'hover:bg-[var(--tech-blue)]/50'
+                    ? 'nav-link-active'
+                    : 'nav-link-hover'
                 }`}
               >
                 <item.icon className="w-5 h-5" />
@@ -46,18 +61,22 @@ const App = () => {
               </Link>
             ))}
           </nav>
-          <div className="p-2 text-sm text-white/70 border-t border-white/10 pt-4">
-            © 2024 SoftSkills AI
+          {/* Footer/Profile Link Placeholder */}
+          <div className="mt-auto pt-4 border-t border-white/10">
+            <Link to="/profile" className="flex items-center space-x-3 p-3 rounded-lg transition-colors duration-200 nav-link nav-link-hover">
+              <User className="w-5 h-5" />
+              <span>张同学 (Profile)</span>
+            </Link>
           </div>
         </div>
 
-        {/* Main Content */}
+        {/* Main Content Area */}
         <main className="flex-1 overflow-y-auto">
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/training" element={<Training />} />
-            <Route path="/learning-path" element={<LearningPath />} />
             <Route path="/assessment" element={<Assessment />} />
+            <Route path="/learning-path" element={<LearningPath />} />
             <Route path="/community" element={<Community />} />
             <Route path="/reports" element={<Reports />} />
             <Route path="/profile" element={<Profile />} />

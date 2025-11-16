@@ -1,322 +1,168 @@
-
 import React from 'react';
-// import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'; // Removed Card import
-import { Button } from '@/components/ui/button';
-import { Progress } from '@/components/ui/progress';
-import {
-  BarChart3,
-  TrendingUp,
-  Download,
-  Share2,
-  RefreshCw,
-  Award,
-  Target,
-  Calendar
-} from 'lucide-react';
-import RadarChart from './RadarChart';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { Award, TrendingUp, Calendar, Zap, BarChart3, Download, Share2 } from 'lucide-react';
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 
 const Assessment = () => {
-  // 模拟数据
-  const skillsData = [
-    { skill: '沟通能力', value: 82 },
-    { skill: '领导力', value: 79 },
-    { skill: '情商管理', value: 86 },
-    { skill: '团队协作', value: 75 },
-    { skill: '问题解决', value: 70 },
-    { skill: '适应能力', value: 68 }
+  const assessmentData = [
+    { subject: '沟通能力', A: 85, fullMark: 100 },
+    { subject: '领导力', A: 78, fullMark: 100 },
+    { subject: '情商管理', A: 82, fullMark: 100 },
+    { subject: '团队协作', A: 90, fullMark: 100 },
+    { subject: '问题解决', A: 75, fullMark: 100 },
+    { subject: '适应能力', A: 88, fullMark: 100 },
   ];
 
-  const detailedMetrics = [
-    { name: '沟通能力', score: 82, improvement: '+5', color: 'bg-blue-500' },
-    { name: '领导力', score: 79, improvement: '+3', color: 'bg-green-500' },
-    { name: '情商管理', score: 86, improvement: '+8', color: 'bg-purple-500' },
-    { name: '团队协作', score: 75, improvement: '+2', color: 'bg-orange-500' },
-    { name: '问题解决', score: 70, improvement: '+4', color: 'bg-red-500' },
-    { name: '适应能力', score: 68, improvement: '+1', color: 'bg-yellow-500' }
+  const history = [
+    { date: '2024-10-25', score: 82, improvement: '+5%', focus: '沟通能力' },
+    { date: '2024-09-10', score: 77, improvement: '+2%', focus: '团队协作' },
+    { date: '2024-07-15', score: 75, improvement: 'N/A', focus: '领导力' },
   ];
 
   const trendData = [
-    { month: '1月', score: 65 },
-    { month: '2月', score: 68 },
-    { month: '3月', score: 72 },
-    { month: '4月', score: 75 },
-    { month: '5月', score: 78 },
-    { month: '6月', score: 82 }
-  ];
-
-  const recentAssessments = [
-    {
-      date: '2024-01-15',
-      scenario: '跨部门协作会议',
-      overallScore: 85,
-      topSkill: '沟通能力',
-      improvementArea: '决策速度'
-    },
-    {
-      date: '2024-01-10',
-      scenario: '客户投诉处理',
-      overallScore: 78,
-      topSkill: '情商管理',
-      improvementArea: '问题解决'
-    },
-    {
-      date: '2024-01-05',
-      scenario: '团队领导决策',
-      overallScore: 82,
-      topSkill: '领导力',
-      improvementArea: '压力管理'
-    }
+    { month: '7月', score: 75 },
+    { month: '8月', score: 76 },
+    { month: '9月', score: 77 },
+    { month: '10月', score: 82 },
+    { month: '11月', score: 85 },
   ];
 
   return (
-    <div className="p-6 space-y-6 main-content">
+    <div className="p-8 space-y-8 max-w-7xl mx-auto">
       {/* 页面标题 */}
-      <div className="card page-title-card">
-        <div className="flex items-center justify-between">
+      <div className="bg-[var(--secondary-dark)] rounded-2xl p-8 text-white shadow-xl">
+        <div className="flex justify-between items-start">
           <div>
-            <h2 className="text-3xl font-bold mb-2">能力评估报告</h2>
-            <p className="text-white/90 text-lg">全面了解您的软技能发展状况</p>
+            <h2 className="text-3xl font-extrabold mb-2">能力评估中心</h2>
+            <p className="text-white/90 text-lg">基于AI的软技能深度分析报告</p>
           </div>
-          <div className="hidden lg:block">
-            <div className="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm">
-              <BarChart3 className="w-10 h-10 text-white" />
-            </div>
+          <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
+            <Award className="w-8 h-8 text-white" />
           </div>
         </div>
       </div>
 
-      {/* 总体评分卡片 */}
-      <div className="grid grid-cols-3">
-        <div className="card stat-card">
-          <div className="p-6 text-center card-content">
-            <div className="w-16 h-16 bg-gradient-to-br from-[var(--tech-blue)] to-[var(--light-blue)] rounded-full flex items-center justify-center mx-auto mb-4">
-              <Award className="w-8 h-8 text-white" />
+      {/* 核心指标与雷达图 */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* 核心指标 */}
+        <div className="lg:col-span-1 space-y-6">
+          <div className="card p-6 bg-white">
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                <TrendingUp className="w-6 h-6 text-green-600" />
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">最新综合评分</p>
+                <p className="text-3xl font-bold text-[var(--primary-dark)]">85 <span className="text-base font-normal text-green-600">+3%</span></p>
+              </div>
             </div>
-            <h3 className="text-2xl font-bold text-[var(--deep-blue)] mb-1">82分</h3>
-            <p className="text-gray-600 text-sm">综合评分</p>
-            <div className="flex items-center justify-center mt-2 text-green-600">
-              <TrendingUp className="w-4 h-4 mr-1" />
-              <span className="text-sm">+5分 较上月</span>
+          </div>
+          <div className="card p-6 bg-white">
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                <Calendar className="w-6 h-6 text-blue-600" />
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">上次评估日期</p>
+                <p className="text-xl font-bold text-[var(--primary-dark)]">2024年10月25日</p>
+              </div>
             </div>
+          </div>
+          <button className="w-full py-3 px-4 bg-[var(--secondary-dark)] text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition-colors flex items-center justify-center space-x-2">
+            <Zap className="w-5 h-5" />
+            <span>开始新的评估</span>
+          </button>
+          <div className="flex space-x-4">
+            <button className="flex-1 py-3 px-4 bg-gray-100 text-[var(--primary-dark)] font-semibold rounded-lg shadow-md hover:bg-gray-200 transition-colors flex items-center justify-center space-x-2">
+              <Download className="w-5 h-5" />
+              <span>下载报告</span>
+            </button>
+            <button className="flex-1 py-3 px-4 bg-gray-100 text-[var(--primary-dark)] font-semibold rounded-lg shadow-md hover:bg-gray-200 transition-colors flex items-center justify-center space-x-2">
+              <Share2 className="w-5 h-5" />
+              <span>分享结果</span>
+            </button>
           </div>
         </div>
 
-        <div className="card stat-card">
-          <div className="p-6 text-center card-content">
-            <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Target className="w-8 h-8 text-white" />
-            </div>
-            <h3 className="text-2xl font-bold text-[var(--deep-blue)] mb-1">情商管理</h3>
-            <p className="text-gray-600 text-sm">最强技能</p>
-            <div className="mt-2">
-              <span className="text-sm bg-green-100 text-green-700 px-2 py-1 rounded">86分</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="card stat-card">
-          <div className="p-6 text-center card-content">
-            <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
-              <RefreshCw className="w-8 h-8 text-white" />
-            </div>
-            <h3 className="text-2xl font-bold text-[var(--deep-blue)] mb-1">适应能力</h3>
-            <p className="text-gray-600 text-sm">待提升技能</p>
-            <div className="mt-2">
-              <span className="text-sm bg-orange-100 text-orange-700 px-2 py-1 rounded">68分</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* 主要内容区域 */}
-      <div className="grid grid-cols-3">
-        {/* 软技能雷达图 */}
-        <div className="lg:col-span-2 card">
-          <div className="bg-white border-0 shadow-lg card">
-            <div className="card-header">
-              <h3 className="flex items-center justify-between text-[var(--deep-blue)] card-title">
-                <span className="flex items-center space-x-2">
-                  <BarChart3 className="w-5 h-5" />
-                  <span>软技能能力雷达图</span>
-                </span>
-                <div className="flex space-x-2">
-                  <Button size="sm" variant="outline">
-                    <Download className="w-4 h-4 mr-2" />
-                    下载报告
-                  </Button>
-                  <Button size="sm" variant="outline">
-                    <Share2 className="w-4 h-4 mr-2" />
-                    分享结果
-                  </Button>
-                </div>
-              </h3>
-            </div>
-            <div className="card-content">
-              <RadarChart data={skillsData} />
-            </div>
-          </div>
-        </div>
-
-        {/* 详细指标 */}
-        <div className="card">
-          <div className="bg-white border-0 shadow-lg card">
-            <div className="card-header">
-              <h3 className="text-[var(--deep-blue)] card-title">详细指标</h3>
-            </div>
-            <div className="space-y-4 card-content">
-              {detailedMetrics.map((metric, index) => (
-                <div key={index} className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-gray-700">{metric.name}</span>
-                    <div className="flex items-center space-x-2">
-                      <span className="text-sm font-bold text-[var(--deep-blue)]">{metric.score}</span>
-                      <span className="text-xs text-green-600 bg-green-50 px-1 py-0.5 rounded">
-                        {metric.improvement}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Progress value={metric.score} className="flex-1 h-2" />
-                    <div className={`w-3 h-3 rounded-full ${metric.color}`}></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* 趋势分析 */}
-      <div className="card">
-        <div className="bg-white border-0 shadow-lg card">
+        {/* 雷达图 */}
+        <div className="lg:col-span-2 card bg-white">
           <div className="card-header">
-            <h3 className="text-[var(--deep-blue)] card-title">能力发展趋势</h3>
+            <h3 className="card-title flex items-center space-x-2">
+              <BarChart3 className="w-5 h-5 text-[var(--secondary-dark)]" />
+              <span>软技能能力分布</span>
+            </h3>
           </div>
           <div className="card-content">
-            <div className="h-80">
+            <div className="h-96">
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={trendData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                  <XAxis
-                    dataKey="month"
-                    tick={{ fontSize: 12, fill: '#64748b' }}
-                    axisLine={{ stroke: '#e2e8f0' }}
-                  />
-                  <YAxis
-                    tick={{ fontSize: 12, fill: '#64748b' }}
-                    axisLine={{ stroke: '#e2e8f0' }}
-                    domain={[60, 90]}
-                  />
-                  <Tooltip
-                    contentStyle={{
-                      backgroundColor: 'white',
-                      border: '1px solid #e2e8f0',
-                      borderRadius: '8px',
-                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
-                    }}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="score"
-                    stroke="#2a6496"
-                    strokeWidth={3}
-                    dot={{ fill: '#2a6496', strokeWidth: 2, r: 4 }}
-                    activeDot={{ r: 6, stroke: '#2a6496', strokeWidth: 2, fill: '#ffffff' }}
-                  />
-                </LineChart>
+                <RadarChart cx="50%" cy="50%" outerRadius="80%" data={assessmentData}>
+                  <PolarGrid stroke="#e5e7eb" />
+                  <PolarAngleAxis dataKey="subject" stroke="#4b5563" />
+                  <PolarRadiusAxis angle={30} domain={[0, 100]} stroke="#e5e7eb" />
+                  <Radar name="当前能力" dataKey="A" stroke="var(--secondary-dark)" fill="var(--secondary-dark)" fillOpacity={0.6} />
+                </RadarChart>
               </ResponsiveContainer>
             </div>
           </div>
         </div>
       </div>
 
-      {/* 最近评估记录 */}
-      <div className="card">
-        <div className="bg-white border-0 shadow-lg card">
-          <div className="card-header">
-            <h3 className="text-[var(--deep-blue)] card-title">最近评估记录</h3>
-          </div>
-          <div className="card-content">
-            <div className="space-y-4">
-              {recentAssessments.map((assessment, index) => (
-                <div key={index} className="p-4 bg-gray-50 rounded-lg">
-                  <div className="flex items-center justify-between mb-2">
-                    <h4 className="font-medium text-[var(--deep-blue)]">{assessment.scenario}</h4>
-                    <div className="flex items-center space-x-2">
-                      <Calendar className="w-4 h-4 text-gray-500" />
-                      <span className="text-sm text-gray-500">{assessment.date}</span>
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-                    <div>
-                      <span className="text-gray-600">综合得分：</span>
-                      <span className="font-semibold text-[var(--tech-blue)] ml-1">{assessment.overallScore}分</span>
-                    </div>
-                    <div>
-                      <span className="text-gray-600">优势技能：</span>
-                      <span className="font-semibold text-green-600 ml-1">{assessment.topSkill}</span>
-                    </div>
-                    <div>
-                      <span className="text-gray-600">改进方向：</span>
-                      <span className="font-semibold text-orange-600 ml-1">{assessment.improvementArea}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+      {/* 趋势分析 */}
+      <div className="card bg-white">
+        <div className="card-header">
+          <h3 className="card-title flex items-center space-x-2">
+            <TrendingUp className="w-5 h-5 text-[var(--secondary-dark)]" />
+            <span>能力发展趋势</span>
+          </h3>
+        </div>
+        <div className="card-content">
+          <div className="h-80">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={trendData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                <XAxis dataKey="month" stroke="#6b7280" />
+                <YAxis domain={[70, 90]} stroke="#6b7280" />
+                <Tooltip />
+                <Line type="monotone" dataKey="score" stroke="var(--secondary-dark)" strokeWidth={3} dot={{ fill: 'var(--secondary-dark)', r: 4 }} activeDot={{ r: 6 }} name="综合得分" />
+              </LineChart>
+            </ResponsiveContainer>
           </div>
         </div>
       </div>
 
-      {/* 行动建议 */}
-      <div className="card">
-        <div className="bg-gradient-to-r from-blue-50 to-blue-100 border-0 shadow-lg card">
-          <div className="card-header">
-            <h3 className="text-[var(--deep-blue)] card-title">个性化提升建议</h3>
-          </div>
-          <div className="card-content">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <h4 className="font-semibold text-[var(--deep-blue)] mb-3">推荐训练场景</h4>
-                <ul className="space-y-2">
-                  <li className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-[var(--tech-blue)] rounded-full"></div>
-                    <span className="text-sm">压力管理与决策训练</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-[var(--tech-blue)] rounded-full"></div>
-                    <span className="text-sm">变化适应能力提升</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-[var(--tech-blue)] rounded-full"></div>
-                    <span className="text-sm">创新思维训练</span>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold text-[var(--deep-blue)] mb-3">学习资源推荐</h4>
-                <ul className="space-y-2">
-                  <li className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span className="text-sm">《适应性领导力》课程</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span className="text-sm">敏捷思维工作坊</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span className="text-sm">变革管理实践指南</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="mt-6">
-              <Button className="bg-[var(--tech-blue)] hover:bg-[var(--deep-blue)]">
-                开始个性化训练计划
-              </Button>
-            </div>
+      {/* 评估历史 */}
+      <div className="card bg-white">
+        <div className="card-header">
+          <h3 className="card-title flex items-center space-x-2">
+            <Calendar className="w-5 h-5 text-[var(--secondary-dark)]" />
+            <span>评估历史记录</span>
+          </h3>
+        </div>
+        <div className="card-content">
+          <div className="overflow-x-auto">
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">日期</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">综合得分</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">进步幅度</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">重点提升领域</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">操作</th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {history.map((item, index) => (
+                  <tr key={index}>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-[var(--primary-dark)]">{item.date}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{item.score}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-green-600">{item.improvement}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.focus}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                      <button className="text-[var(--secondary-dark)] hover:text-blue-700">查看报告</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -325,4 +171,3 @@ const Assessment = () => {
 };
 
 export default Assessment;
-

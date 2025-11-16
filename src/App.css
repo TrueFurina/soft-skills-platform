@@ -1,23 +1,41 @@
-/* Placeholder for App.css */
-/* Add global styles here */
+/* Global Styles and Variables for a Professional, Modern Look (Based on Reference) */
 
 /* Custom CSS variables for the theme */
 :root {
-  --deep-blue: #1a365d; /* Darker blue for primary elements */
-  --tech-blue: #2a6496; /* Tech blue for accents and buttons */
-  --light-blue: #61a5c2; /* Lighter blue for backgrounds */
+  --primary-dark: #1e3a8a; /* Deep Blue - Primary background/Sidebar */
+  --secondary-dark: #2563eb; /* Medium Blue - Header/Accent */
+  --accent-green: #10b981; /* Green - Accent color for positive metrics */
+  --accent-orange: #f59e0b; /* Orange - Accent color for warning/focus */
+  --light-gray: #f3f4f6; /* Light Gray - Main content background */
+  --card-bg: #ffffff; /* White - Card background */
+  --card-border: #e5e7eb; /* Light Border */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
 }
 
-/* Custom card styles to replace shadcn/ui Card component */
+/* Base Styles */
+body {
+  background-color: var(--light-gray);
+  color: var(--primary-dark);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Custom card styles to match the reference design */
 .card {
-  border: 1px solid #e2e8f0; /* border-gray-200 */
-  border-radius: 0.5rem; /* rounded-lg */
-  background-color: white;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* shadow-md */
+  border: 1px solid var(--card-border);
+  border-radius: 1rem; /* Rounded corners */
+  background-color: var(--card-bg);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 10px -1px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.08);
 }
 
 .card-header {
-  padding: 1.5rem 1.5rem 0; /* p-6 pt-0 */
+  padding: 1.5rem 1.5rem 0;
 }
 
 .card-content {
@@ -27,43 +45,64 @@
 .card-title {
   font-size: 1.125rem; /* text-lg */
   font-weight: 600; /* font-semibold */
-  line-height: 1.75rem; /* leading-7 */
+  line-height: 1.75rem;
+  color: var(--primary-dark);
 }
 
-/* Custom grid for training page */
-.main-content-grid {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  gap: 1.5rem;
+/* Navigation/Sidebar Styles */
+.sidebar {
+  background-color: var(--primary-dark);
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.main-training-area {
-  grid-column: 1 / 3;
+.nav-link {
+  color: #d1d5db; /* Light text */
+  transition: background-color 0.2s, color 0.2s;
 }
 
-.real-time-feedback-panel, .real-time-analysis-panel {
-  grid-column: auto;
+.nav-link-active {
+  background-color: var(--secondary-dark) !important;
+  color: white !important;
+  font-weight: 600;
 }
 
-@media (min-width: 1024px) {
-  .main-training-area {
-    grid-column: 1 / 2;
-  }
+.nav-link-hover:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: white;
 }
 
-/* Pulse animation for recording indicator */
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(255, 0, 0, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
-  }
+/* Utility Classes for Components */
+.text-accent-green {
+  color: var(--accent-green);
 }
 
-.pulse-animation {
-  animation: pulse 2s infinite;
+.bg-accent-green {
+  background-color: var(--accent-green);
+}
+
+.text-accent-orange {
+  color: var(--accent-orange);
+}
+
+.bg-accent-orange {
+  background-color: var(--accent-orange);
+}
+
+/* Custom scrollbar for better aesthetics */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #9ca3af; /* Tailwind gray-400 */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #6b7280; /* Tailwind gray-500 */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f9fafb; /* Tailwind gray-50 */
 }
