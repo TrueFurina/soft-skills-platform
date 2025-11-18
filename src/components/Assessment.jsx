@@ -5,26 +5,28 @@ import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Responsi
 const Assessment = () => {
   const [selectedHistory, setSelectedHistory] = useState(null);
   const assessmentData = [
-    { subject: '沟通能力', A: 85, fullMark: 100 },
-    { subject: '领导力', A: 78, fullMark: 100 },
-    { subject: '情商管理', A: 82, fullMark: 100 },
-    { subject: '团队协作', A: 90, fullMark: 100 },
-    { subject: '问题解决', A: 75, fullMark: 100 },
-    { subject: '适应能力', A: 88, fullMark: 100 },
+    { subject: '沟通能力', A: 92, fullMark: 100 },
+    { subject: '领导力', A: 85, fullMark: 100 },
+    { subject: '情商管理', A: 88, fullMark: 100 },
+    { subject: '团队协作', A: 95, fullMark: 100 },
+    { subject: '问题解决', A: 80, fullMark: 100 },
+    { subject: '创新思维', A: 75, fullMark: 100 },
   ];
 
   const history = [
-    { date: '2024-10-25', score: 82, improvement: '+5%', focus: '沟通能力' },
-    { date: '2024-09-10', score: 77, improvement: '+2%', focus: '团队协作' },
-    { date: '2024-07-15', score: 75, improvement: 'N/A', focus: '领导力' },
+    { date: '2024-11-15', score: 89, improvement: '+4%', focus: '团队协作' },
+    { date: '2024-10-25', score: 85, improvement: '+3%', focus: '沟通能力' },
+    { date: '2024-09-10', score: 82, improvement: '+5%', focus: '情商管理' },
+    { date: '2024-07-15', score: 77, improvement: 'N/A', focus: '领导力' },
   ];
 
   const trendData = [
-    { month: '7月', score: 75 },
-    { month: '8月', score: 76 },
-    { month: '9月', score: 77 },
-    { month: '10月', score: 82 },
-    { month: '11月', score: 85 },
+    { month: '7月', score: 77 },
+    { month: '8月', score: 80 },
+    { month: '9月', score: 82 },
+    { month: '10月', score: 85 },
+    { month: '11月', score: 89 },
+    { month: '12月', score: 90 },
   ];
 
   return (
@@ -53,7 +55,7 @@ const Assessment = () => {
               </div>
               <div>
                 <p className="text-sm text-gray-500">最新综合评分</p>
-                <p className="text-3xl font-bold text-[var(--primary-dark)]">85 <span className="text-base font-normal text-green-600">+3%</span></p>
+                <p className="text-3xl font-bold text-[var(--primary-dark)]">90 <span className="text-base font-normal text-green-600">+5%</span></p>
               </div>
             </div>
           </div>
@@ -64,7 +66,7 @@ const Assessment = () => {
               </div>
               <div>
                 <p className="text-sm text-gray-500">上次评估日期</p>
-                <p className="text-xl font-bold text-[var(--primary-dark)]">2024年10月25日</p>
+                <p className="text-xl font-bold text-[var(--primary-dark)]">2024年11月15日</p>
               </div>
             </div>
           </div>

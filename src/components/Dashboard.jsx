@@ -4,30 +4,30 @@ import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Responsi
 
 // Mock Data for Dashboard
 const skillData = [
-  { subject: '沟通能力', A: 85, fullMark: 100 },
-  { subject: '领导力', A: 78, fullMark: 100 },
-  { subject: '情商管理', A: 82, fullMark: 100 },
-  { subject: '团队协作', A: 90, fullMark: 100 },
-  { subject: '问题解决', A: 75, fullMark: 100 },
-  { subject: '适应能力', A: 88, fullMark: 100 },
+  { subject: '沟通能力', A: 92, fullMark: 100 },
+  { subject: '领导力', A: 85, fullMark: 100 },
+  { subject: '情商管理', A: 88, fullMark: 100 },
+  { subject: '团队协作', A: 95, fullMark: 100 },
+  { subject: '问题解决', A: 80, fullMark: 100 },
+  { subject: '创新思维', A: 75, fullMark: 100 },
 ];
 
 const progressData = [
-  { name: '周一', uv: 4000, pv: 2400, amt: 2400 },
-  { name: '周二', uv: 3000, pv: 1398, amt: 2210 },
-  { name: '周三', uv: 2000, pv: 9800, amt: 2290 },
-  { name: '周四', uv: 2780, pv: 3908, amt: 2000 },
-  { name: '周五', uv: 1890, pv: 4800, amt: 2181 },
-  { name: '周六', uv: 2390, pv: 3800, amt: 2500 },
-  { name: '周日', uv: 3490, pv: 4300, amt: 2100 },
+  { name: '周一', duration: 45, score: 88 },
+  { name: '周二', duration: 60, score: 90 },
+  { name: '周三', duration: 30, score: 85 },
+  { name: '周四', duration: 90, score: 92 },
+  { name: '周五', duration: 75, score: 89 },
+  { name: '周六', duration: 120, score: 94 },
+  { name: '周日', duration: 15, score: 80 },
 ];
 
 const Dashboard = () => {
   const metricCards = [
-    { title: '总训练时长', value: '24.5', unit: '小时', icon: Clock, color: 'text-blue-500', bg: 'bg-blue-50' },
-    { title: '完成场景', value: '18', unit: '个', icon: CheckCircle, color: 'text-green-500', bg: 'bg-green-50' },
-    { title: '平均得分', value: '82', unit: '分', icon: Star, color: 'text-yellow-500', bg: 'bg-yellow-50' },
-    { title: '技能提升', value: '+15', unit: '%', icon: TrendingUp, color: 'text-red-500', bg: 'bg-red-50' },
+    { title: '总训练时长', value: '35.8', unit: '小时', icon: Clock, color: 'text-blue-500', bg: 'bg-blue-50' },
+    { title: '完成场景', value: '25', unit: '个', icon: CheckCircle, color: 'text-green-500', bg: 'bg-green-50' },
+    { title: '平均得分', value: '89', unit: '分', icon: Star, color: 'text-yellow-500', bg: 'bg-yellow-50' },
+    { title: '技能提升', value: '+22', unit: '%', icon: TrendingUp, color: 'text-red-500', bg: 'bg-red-50' },
   ];
 
   return (
@@ -163,7 +163,7 @@ const Dashboard = () => {
                 <YAxis stroke="#6b7280" />
                 <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                 <Tooltip />
-                <Area type="monotone" dataKey="uv" stroke="var(--secondary-dark)" fillOpacity={1} fill="url(#colorUv)" name="学习时长 (分钟)" />
+                <Area type="monotone" dataKey="duration" stroke="var(--secondary-dark)" fillOpacity={1} fill="url(#colorUv)" name="学习时长 (分钟)" />
               </AreaChart>
             </ResponsiveContainer>
           </div>

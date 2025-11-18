@@ -12,6 +12,8 @@ const LearningPath = () => {
       modules: 8,
       description: '专注于提升职场沟通技巧，包括倾听、表达、谈判和冲突解决。',
       color: 'from-blue-500 to-cyan-500',
+      level: '中级',
+      focus: '沟通能力, 谈判技巧'
     },
     {
       title: '卓越领导力培养计划',
@@ -21,6 +23,8 @@ const LearningPath = () => {
       modules: 12,
       description: '培养团队领导、激励和决策能力，适用于未来管理岗位。',
       color: 'from-green-500 to-teal-500',
+      level: '高级',
+      focus: '领导力, 决策制定'
     },
     {
       title: '情商与压力管理',
@@ -30,6 +34,19 @@ const LearningPath = () => {
       modules: 6,
       description: '学习自我情绪调节、情商提升和高效应对工作压力的方法。',
       color: 'from-yellow-500 to-orange-500',
+      level: '初级',
+      focus: '情商管理, 适应能力'
+    },
+    {
+      title: '创新思维与问题解决',
+      progress: 0,
+      status: '未开始',
+      duration: '5周',
+      modules: 10,
+      description: '掌握系统性创新方法和复杂问题分析与解决的框架。',
+      color: 'from-purple-500 to-pink-500',
+      level: '中级',
+      focus: '创新思维, 问题解决'
     },
   ];
 
@@ -98,12 +115,20 @@ const LearningPath = () => {
               <p className="text-gray-600 ml-6">{path.description}</p>
               <div className="flex items-center space-x-6 text-sm text-gray-500 ml-6">
                 <div className="flex items-center space-x-1">
+                  <Target className="w-4 h-4" />
+                  <span>{path.level}</span>
+                </div>
+                <div className="flex items-center space-x-1">
                   <Clock className="w-4 h-4" />
                   <span>{path.duration}</span>
                 </div>
                 <div className="flex items-center space-x-1">
                   <BookOpen className="w-4 h-4" />
                   <span>{path.modules} 模块</span>
+                </div>
+                <div className="flex items-center space-x-1">
+                  <User className="w-4 h-4" />
+                  <span>{path.focus}</span>
                 </div>
               </div>
             </div>

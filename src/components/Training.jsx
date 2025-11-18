@@ -12,6 +12,7 @@ const Training = () => {
       score: 92,
       duration: '60分钟',
       color: 'bg-green-500',
+      skill: '沟通能力',
     },
     {
       title: '跨部门冲突解决',
@@ -21,6 +22,7 @@ const Training = () => {
       score: null,
       duration: '45分钟',
       color: 'bg-blue-500',
+      skill: '团队协作',
     },
     {
       title: '危机公关演练',
@@ -30,6 +32,7 @@ const Training = () => {
       score: null,
       duration: '75分钟',
       color: 'bg-gray-500',
+      skill: '问题解决',
     },
     {
       title: '团队激励与士气提升',
@@ -39,6 +42,17 @@ const Training = () => {
       score: null,
       duration: '50分钟',
       color: 'bg-yellow-500',
+      skill: '领导力',
+    },
+    {
+      title: '情商管理：情绪识别',
+      description: '通过AI面部和语音分析，训练情绪识别和共情能力。',
+      status: '未开始',
+      progress: 0,
+      score: null,
+      duration: '30分钟',
+      color: 'bg-purple-500',
+      skill: '情商管理',
     },
   ];
 
@@ -106,6 +120,10 @@ const Training = () => {
               </div>
               <p className="text-gray-600 ml-6">{scenario.description}</p>
               <div className="flex items-center space-x-6 text-sm text-gray-500 ml-6">
+                <div className="flex items-center space-x-1">
+                  <Target className="w-4 h-4" />
+                  <span>{scenario.skill}</span>
+                </div>
                 <div className="flex items-center space-x-1">
                   <Clock className="w-4 h-4" />
                   <span>{scenario.duration}</span>

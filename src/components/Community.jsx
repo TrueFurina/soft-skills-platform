@@ -18,30 +18,39 @@ const Community = () => {
   const posts = [
     {
       id: 1,
-      user: '李明',
+      user: '李明 (高级沟通专家)',
       avatar: 'https://i.pravatar.cc/150?img=1',
       time: '2小时前',
-      content: '在“高压谈判模拟”中，我发现保持沉默比急于回应更有效。大家有什么高压场景下的谈判技巧分享吗？',
-      likes: 45,
-      comments: 12,
+      content: '在“高压谈判模拟”中，我发现保持沉默比急于回应更有效。大家有什么高压场景下的谈判技巧分享吗？ #沟通技巧 #谈判策略',
+      likes: 125,
+      comments: 38,
     },
     {
       id: 2,
-      user: '王芳',
+      user: '王芳 (项目经理)',
       avatar: 'https://i.pravatar.cc/150?img=2',
       time: '5小时前',
-      content: '成功完成了“卓越领导力培养计划”！最大的收获是学会了如何进行有效的授权和激励。推荐大家都来试试！',
-      likes: 88,
-      comments: 25,
+      content: '成功完成了“卓越领导力培养计划”！最大的收获是学会了如何进行有效的授权和激励。推荐大家都来试试！ #领导力 #团队管理',
+      likes: 210,
+      comments: 55,
     },
     {
       id: 3,
-      user: '张强',
+      user: '张强 (初级分析师)',
       avatar: 'https://i.pravatar.cc/150?img=3',
       time: '1天前',
-      content: '最近在学习情商管理，感觉情绪稳定度有明显提升。有没有关于处理职场“情绪勒索”的场景推荐？',
-      likes: 30,
-      comments: 8,
+      content: '最近在学习情商管理，感觉情绪稳定度有明显提升。有没有关于处理职场“情绪勒索”的场景推荐？ #情商管理 #职场成长',
+      likes: 95,
+      comments: 21,
+    },
+    {
+      id: 4,
+      user: '赵丽 (HRBP)',
+      avatar: 'https://i.pravatar.cc/150?img=4',
+      time: '2天前',
+      content: '求助！如何提高团队在远程协作中的效率？有没有推荐的“跨部门冲突解决”训练场景？ #团队协作 #远程办公',
+      likes: 150,
+      comments: 42,
     },
   ];
 
@@ -67,7 +76,7 @@ const Community = () => {
             <Users className="w-8 h-8 text-blue-500" />
             <div>
               <p className="text-sm text-gray-500">社区成员</p>
-              <p className="text-2xl font-bold text-[var(--primary-dark)]">1.2K</p>
+              <p className="text-2xl font-bold text-[var(--primary-dark)]">5.8K</p>
             </div>
           </div>
         </div>
@@ -76,7 +85,7 @@ const Community = () => {
             <MessageSquare className="w-8 h-8 text-green-500" />
             <div>
               <p className="text-sm text-gray-500">今日新帖</p>
-              <p className="text-2xl font-bold text-[var(--primary-dark)]">45</p>
+              <p className="text-2xl font-bold text-[var(--primary-dark)]">112</p>
             </div>
           </div>
         </div>
@@ -85,7 +94,7 @@ const Community = () => {
             <TrendingUp className="w-8 h-8 text-yellow-500" />
             <div>
               <p className="text-sm text-gray-500">活跃度</p>
-              <p className="text-2xl font-bold text-[var(--primary-dark)]">90%</p>
+              <p className="text-2xl font-bold text-[var(--primary-dark)]">95%</p>
             </div>
           </div>
         </div>
@@ -151,11 +160,12 @@ const Community = () => {
             <h3 className="text-xl font-semibold text-[var(--primary-dark)] mb-4">热门话题</h3>
             <div className="space-y-3">
               {[
-                { tag: '沟通技巧', count: 234 },
-                { tag: '领导力', count: 189 },
-                { tag: '情绪管理', count: 156 },
-                { tag: '团队协作', count: 143 },
-                { tag: '职场成长', count: 128 }
+                { tag: '沟通技巧', count: 512 },
+                { tag: '领导力', count: 450 },
+                { tag: '情商管理', count: 380 },
+                { tag: '团队协作', count: 320 },
+                { tag: '创新思维', count: 280 },
+                { tag: '职场成长', count: 250 }
               ].map((topic, index) => (
                 <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
                   <span className="text-[var(--primary-dark)] font-medium">#{topic.tag}</span>

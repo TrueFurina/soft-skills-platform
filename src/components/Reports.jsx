@@ -26,29 +26,29 @@ const Reports = () => {
 
   // 模拟数据
   const performanceData = [
-    { month: '1月', communication: 65, leadership: 60, emotional: 70, teamwork: 68, problem: 62, adaptability: 58 },
-    { month: '2月', communication: 68, leadership: 65, emotional: 72, teamwork: 70, problem: 65, adaptability: 62 },
-    { month: '3月', communication: 72, leadership: 68, emotional: 75, teamwork: 72, problem: 68, adaptability: 65 },
-    { month: '4月', communication: 75, leadership: 72, emotional: 78, teamwork: 75, problem: 70, adaptability: 68 },
-    { month: '5月', communication: 78, leadership: 75, emotional: 82, teamwork: 78, problem: 73, adaptability: 70 },
-    { month: '6月', communication: 82, leadership: 79, emotional: 86, teamwork: 75, problem: 70, adaptability: 68 }
+    { month: '7月', communication: 78, leadership: 75, emotional: 82, teamwork: 78, problem: 73, adaptability: 70 },
+    { month: '8月', communication: 80, leadership: 77, emotional: 84, teamwork: 80, problem: 75, adaptability: 72 },
+    { month: '9月', communication: 85, leadership: 80, emotional: 88, teamwork: 82, problem: 78, adaptability: 75 },
+    { month: '10月', communication: 88, leadership: 83, emotional: 90, teamwork: 85, problem: 80, adaptability: 78 },
+    { month: '11月', communication: 92, leadership: 85, emotional: 92, teamwork: 88, problem: 82, adaptability: 80 },
+    { month: '12月', communication: 95, leadership: 88, emotional: 95, teamwork: 90, problem: 85, adaptability: 82 }
   ];
 
   const skillDistribution = [
-    { name: '沟通能力', value: 82, color: '#2a6496' },
-    { name: '领导力', value: 79, color: '#61a5c2' },
-    { name: '情商管理', value: 86, color: '#1a365d' },
-    { name: '团队协作', value: 75, color: '#ff7f50' },
-    { name: '问题解决', value: 70, color: '#28a745' },
-    { name: '适应能力', value: 68, color: '#6c757d' }
+    { name: '沟通能力', value: 92, color: '#2a6496' },
+    { name: '领导力', value: 85, color: '#61a5c2' },
+    { name: '情商管理', value: 88, color: '#1a365d' },
+    { name: '团队协作', value: 95, color: '#ff7f50' },
+    { name: '问题解决', value: 80, color: '#28a745' },
+    { name: '创新思维', value: 75, color: '#6c757d' }
   ];
 
   const trainingEffectiveness = [
-    { scenario: '跨部门协作', before: 65, after: 82, improvement: 17 },
-    { scenario: '客户投诉处理', before: 70, after: 86, improvement: 16 },
-    { scenario: '团队领导决策', before: 68, after: 79, improvement: 11 },
-    { scenario: '压力管理', before: 60, after: 75, improvement: 15 },
-    { scenario: '创新思维', before: 55, after: 68, improvement: 13 }
+    { scenario: '高压谈判模拟', before: 75, after: 92, improvement: 17 },
+    { scenario: '跨部门冲突解决', before: 70, after: 88, improvement: 18 },
+    { scenario: '团队激励与士气提升', before: 68, after: 85, improvement: 17 },
+    { scenario: '情商管理：情绪识别', before: 60, after: 80, improvement: 20 },
+    { scenario: '危机公关演练', before: 55, after: 75, improvement: 20 }
   ];
 
   const reportHistory = [
@@ -145,7 +145,7 @@ const Reports = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600 mb-1">总体进步</p>
-                <p className="text-2xl font-bold text-[var(--deep-blue)]">+18%</p>
+                <p className="text-2xl font-bold text-[var(--deep-blue)]">+25%</p>
               </div>
               <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
                 <TrendingUp className="w-6 h-6 text-green-600" />
@@ -173,7 +173,7 @@ const Reports = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600 mb-1">行业排名</p>
-                <p className="text-2xl font-bold text-[var(--deep-blue)]">前15%</p>
+                <p className="text-2xl font-bold text-[var(--deep-blue)]">前10%</p>
               </div>
               <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
                 <Target className="w-6 h-6 text-orange-600" />
@@ -187,7 +187,7 @@ const Reports = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600 mb-1">活跃度</p>
-                <p className="text-2xl font-bold text-[var(--deep-blue)]">92%</p>
+                <p className="text-2xl font-bold text-[var(--deep-blue)]">98%</p>
               </div>
               <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
                 <Activity className="w-6 h-6 text-purple-600" />
