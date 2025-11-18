@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Award, TrendingUp, Calendar, Zap, BarChart3, Download, Share2 } from 'lucide-react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 
 const Assessment = () => {
+  const [selectedHistory, setSelectedHistory] = useState(null);
   const assessmentData = [
     { subject: '沟通能力', A: 85, fullMark: 100 },
     { subject: '领导力', A: 78, fullMark: 100 },
@@ -151,7 +152,11 @@ const Assessment = () => {
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {history.map((item, index) => (
-                  <tr key={index}>
+                  <tr 
+                      key={index} 
+                      className={`cursor-pointer transition-colors ${selectedHistory === index ? 'bg-blue-50' : 'hover:bg-gray-100'}`}
+                      onClick={() => setSelectedHistory(index)}
+                    >
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-[var(--primary-dark)]">{item.date}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{item.score}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-green-600">{item.improvement}</td>

@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 // import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'; // Removed Card import
 import { Button } from '@/components/ui/button';
 import {
@@ -77,6 +77,13 @@ const Reports = () => {
       highlights: ['情绪识别准确率85%', '压力管理技能优秀', '共情能力待提升']
     }
   ];
+  
+  const filteredReports = useMemo(() => {
+    return reportHistory.filter(report => {
+      if (selectedReportType === 'all') return true;
+      return report.type === (selectedReportType === 'quarterly' ? '季度报告' : selectedReportType === 'special' ? '专项报告' : '深度分析');
+    });
+  }, [selectedReportType]);
 
   const benchmarkData = [
     { category: '同行业平均', communication: 75, leadership: 70, emotional: 78, teamwork: 72, problem: 68, adaptability: 65 },
@@ -313,7 +320,7 @@ const Reports = () => {
         </div>
         <div className="card-content">
           <div className="space-y-4">
-            {reportHistory.map((report) => (
+            {filteredReports.map((report) => (
               <div key={report.id} className="p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
                 <div className="flex items-center justify-between mb-2">
                   <h4 className="font-semibold text-[var(--deep-blue)]">{report.title}</h4>

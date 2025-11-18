@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Users, MessageSquare, Heart, Send, User, Zap, TrendingUp } from 'lucide-react';
 
 const Community = () => {
+  const [likedPosts, setLikedPosts] = useState(new Set());
+
+  const handleLike = (postId) => {
+    setLikedPosts(prev => {
+      const newLiked = new Set(prev);
+      if (newLiked.has(postId)) {
+        newLiked.delete(postId);
+      } else {
+        newLiked.add(postId);
+      }
+      return newLiked;
+    });
+  };
   const posts = [
     {
       id: 1,
@@ -110,9 +123,14 @@ const Community = () => {
               </div>
               <p className="text-gray-700 mb-4">{post.content}</p>
               <div className="flex items-center space-x-6 border-t border-gray-200 pt-4">
-                <button className="flex items-center space-x-1 text-gray-500 hover:text-red-500 transition-colors">
-                  <Heart className="w-5 h-5" />
-                  <span>{post.likes} 赞</span>
+                <button 
+                  onClick={() => handleLike(post.id)}
+                  className={`flex items-center space-x-1 transition-colors ${
+                    likedPosts.has(post.id) ? 'text-red-500' : 'text-gray-500 hover:text-red-500'
+                  }`}
+                >
+                  <Heart className={`w-5 h-5 ${likedPosts.has(post.id) ? 'fill-current' : ''}`} />
+                  <span>{post.likes + (likedPosts.has(post.id) ? 1 : 0)} 赞</span>
                 </button>
                 <button className="flex items-center space-x-1 text-gray-500 hover:text-blue-500 transition-colors">
                   <MessageSquare className="w-5 h-5" />

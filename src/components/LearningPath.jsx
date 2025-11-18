@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BookOpen, CheckCircle, Clock, TrendingUp, Zap, Target, User } from 'lucide-react';
 
 const LearningPath = () => {
+  const [selectedPath, setSelectedPath] = useState(null);
   const paths = [
     {
       title: '高效沟通大师之路',
@@ -81,7 +82,11 @@ const LearningPath = () => {
       {/* 学习路径列表 */}
       <div className="space-y-6">
         {paths.map((path, index) => (
-          <div key={index} className="card p-6 bg-white flex flex-col md:flex-row justify-between items-start md:items-center">
+          <div 
+            key={index} 
+            className={`card p-6 bg-white flex flex-col md:flex-row justify-between items-start md:items-center cursor-pointer transition-all duration-300 ${selectedPath === index ? 'ring-4 ring-blue-500 ring-opacity-50 shadow-xl' : 'hover:shadow-lg'}`}
+            onClick={() => setSelectedPath(index)}
+          >
             <div className="flex-1 space-y-2">
               <div className="flex items-center space-x-3">
                 <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${path.color}`}></div>

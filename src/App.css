@@ -2,8 +2,8 @@
 
 /* Custom CSS variables for the theme */
 :root {
-  --primary-dark: #1e3a8a; /* Deep Blue - Primary background/Sidebar */
-  --secondary-dark: #2563eb; /* Medium Blue - Header/Accent */
+  --primary-dark: #111827; /* Dark Gray/Blue - Primary background/Sidebar (Closer to reference) */
+  --secondary-dark: #3b82f6; /* Medium Blue - Header/Accent */
   --accent-green: #10b981; /* Green - Accent color for positive metrics */
   --accent-orange: #f59e0b; /* Orange - Accent color for warning/focus */
   --light-gray: #f3f4f6; /* Light Gray - Main content background */
@@ -30,8 +30,8 @@ body {
 }
 
 .card:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 10px -1px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
 }
 
 .card-header {
@@ -64,6 +64,7 @@ body {
   background-color: var(--secondary-dark) !important;
   color: white !important;
   font-weight: 600;
+  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.5), 0 2px 4px -2px rgba(37, 99, 235, 0.5);
 }
 
 .nav-link-hover:hover {

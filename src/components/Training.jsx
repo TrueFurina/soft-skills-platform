@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Zap, Clock, TrendingUp, Award, Play, CheckCircle, Target, Users } from 'lucide-react';
 
 const Training = () => {
+  const [selectedScenario, setSelectedScenario] = useState(null);
   const trainingScenarios = [
     {
       title: '高压谈判模拟',
@@ -90,7 +91,11 @@ const Training = () => {
       {/* 训练场景列表 */}
       <div className="space-y-6">
         {trainingScenarios.map((scenario, index) => (
-          <div key={index} className="card p-6 bg-white flex flex-col md:flex-row justify-between items-start md:items-center">
+          <div 
+            key={index} 
+            className={`card p-6 bg-white flex flex-col md:flex-row justify-between items-start md:items-center cursor-pointer transition-all duration-300 ${selectedScenario === index ? 'ring-4 ring-blue-500 ring-opacity-50 shadow-xl' : 'hover:shadow-lg'}`}
+            onClick={() => setSelectedScenario(index)}
+          >
             <div className="flex-1 space-y-2">
               <div className="flex items-center space-x-3">
                 <div className={`w-3 h-3 rounded-full ${scenario.color}`}></div>

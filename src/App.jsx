@@ -23,15 +23,9 @@ const navItems = [
 ];
 
 // Custom Hook to get active link based on path
-const useActiveLink = () => {
+const App = () => {
   const location = useLocation();
   const currentPath = location.pathname;
-  const activeItem = navItems.find(item => item.path === currentPath);
-  return activeItem ? activeItem.link : 'dashboard';
-};
-
-const App = () => {
-  const [activeLink, setActiveLink] = useState(useActiveLink());
 
   return (
     <Router>
@@ -49,9 +43,9 @@ const App = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                onClick={() => setActiveLink(item.link)}
+                onClick={() => {}}
                 className={`flex items-center space-x-3 p-3 rounded-lg transition-colors duration-200 nav-link ${
-                  activeLink === item.link
+                  currentPath === item.path
                     ? 'nav-link-active'
                     : 'nav-link-hover'
                 }`}
