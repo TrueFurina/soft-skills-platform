@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { Home, Zap, Award, BookOpen, Users, User } from 'lucide-react';
 
 // Import Components
@@ -28,7 +28,7 @@ const App = () => {
   const currentPath = location.pathname;
 
   return (
-    <Router>
+    <BrowserRouter>
       <div className="flex h-screen bg-[var(--light-gray)]">
         {/* Sidebar - Based on Reference Page */}
         <div className="w-64 bg-[var(--primary-dark)] sidebar text-white flex flex-col p-4 shadow-xl">
@@ -77,7 +77,7 @@ const App = () => {
           </Routes>
         </main>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 };
 
