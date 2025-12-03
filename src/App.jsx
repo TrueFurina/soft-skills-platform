@@ -23,60 +23,66 @@ const navItems = [
 ];
 
 // Custom Hook to get active link based on path
-const App = () => {
+const Layout = () => {
   const location = useLocation();
   const currentPath = location.pathname;
 
   return (
-    <BrowserRouter>
-      <div className="flex h-screen bg-[var(--light-gray)]">
-        {/* Sidebar - Based on Reference Page */}
-        <div className="w-64 bg-[var(--primary-dark)] sidebar text-white flex flex-col p-4 shadow-xl">
-          <div className="flex items-center space-x-3 mb-8 p-2">
-            <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-              <Zap className="w-5 h-5 text-[var(--primary-dark)]" />
-            </div>
-            <div className="text-xl font-bold">SoftSkills AI</div>
+    <div className="flex h-screen bg-[var(--light-gray)]">
+      {/* Sidebar - Based on Reference Page */}
+      <div className="w-64 bg-[var(--primary-dark)] sidebar text-white flex flex-col p-4 shadow-xl">
+        <div className="flex items-center space-x-3 mb-8 p-2">
+          <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+            <Zap className="w-5 h-5 text-[var(--primary-dark)]" />
           </div>
-          <nav className="flex-1 space-y-2">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                onClick={() => {}}
-                className={`flex items-center space-x-3 p-3 rounded-lg transition-colors duration-200 nav-link ${
-                  currentPath === item.path
-                    ? 'nav-link-active'
-                    : 'nav-link-hover'
-                }`}
-              >
-                <item.icon className="w-5 h-5" />
-                <span>{item.name}</span>
-              </Link>
-            ))}
-          </nav>
-          {/* Footer/Profile Link Placeholder */}
-          <div className="mt-auto pt-4 border-t border-white/10">
-            <Link to="/profile" className="flex items-center space-x-3 p-3 rounded-lg transition-colors duration-200 nav-link nav-link-hover">
-              <User className="w-5 h-5" />
-              <span>张同学 (Profile)</span>
-            </Link>
-          </div>
+          <div className="text-xl font-bold">SoftSkills AI</div>
         </div>
-
-        {/* Main Content Area */}
-        <main className="flex-1 overflow-y-auto">
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/training" element={<Training />} />
-            <Route path="/assessment" element={<Assessment />} />
-            <Route path="/learning-path" element={<LearningPath />} />
-            <Route path="/community" element={<Community />} />
-            <Route path="/reports" element={<Reports />} />
-            <Route path="/profile" element={<Profile />} />
-          </Routes>
-        </main>
+        <nav className="flex-1 space-y-2">
+          {navItems.map((item) => (
+            <Link
+              key={item.name}
+              to={item.path}
+              onClick={() => {}}
+              className={`flex items-center space-x-3 p-3 rounded-lg transition-colors duration-200 nav-link ${
+                currentPath === item.path
+                  ? 'nav-link-active'
+                  : 'nav-link-hover'
+              }`}
+            >
+              <item.icon className="w-5 h-5" />
+              <span>{item.name}</span>
+            </Link>
+          ))}
+        </nav>
+        {/* Footer/Profile Link Placeholder */}
+        <div className="mt-auto pt-4 border-t border-white/10">
+          <Link to="/profile" className="flex items-center space-x-3 p-3 rounded-lg transition-colors duration-200 nav-link nav-link-hover">
+            <User className="w-5 h-5" />
+            <span>张同学 (Profile)</span>
+          </Link>
+        </div>
       </div>
+
+      {/* Main Content Area */}
+      <main className="flex-1 overflow-y-auto">
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/training" element={<Training />} />
+          <Route path="/assessment" element={<Assessment />} />
+          <Route path="/learning-path" element={<LearningPath />} />
+          <Route path="/community" element={<Community />} />
+          <Route path="/reports" element={<Reports />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
+      </main>
+    </div>
+  );
+};
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      <Layout />
     </BrowserRouter>
   );
 };
