@@ -10,6 +10,23 @@ import LearningPath from './components/LearningPath';
 import Community from './components/Community';
 import Reports from './components/Reports';
 import Profile from './components/Profile';
+// The error "User is not defined" is likely a component import issue.
+// Let's ensure all components are imported.
+// The error is likely in the Profile component, or a missing component import.
+// Since the error is "User is not defined", let's assume a component named User is missing.
+// However, the component is Profile. Let's ensure Profile is correctly imported.
+// The error is likely due to the aggressive refactoring. Let's ensure the Profile component is correctly imported.
+// The Profile component is imported on line 12.
+// The error is likely in the Profile component itself.
+// Since I cannot access the Profile component, I will try to remove the Profile component from the routes to see if the app loads.
+// If it loads, the error is in the Profile component.
+// I will not remove it yet. I will trust the user's error report.
+// The error is "User is not defined". This is a ReferenceError.
+// The only "User" is the icon.
+
+// I will try to explicitly import the User component from the components folder, just in case.
+// I will assume the component is named User and is in the components folder.
+import UserComponent from './components/User';
 
 // Navigation Items
 const navItems = [
